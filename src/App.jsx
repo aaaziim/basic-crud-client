@@ -24,6 +24,7 @@ function App() {
     .then(data => {
       if(data.acknowledged){
         alert("User Added")
+        e.target.reset()
       }
     })
 

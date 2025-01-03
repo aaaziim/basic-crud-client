@@ -26,6 +26,10 @@ const Users = () => {
     fetchUsers();
   }, []);
 
+  const handleDelete = (id) =>{
+    console.log("delete", id)
+  }
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -34,7 +38,9 @@ const Users = () => {
       <h1>Users List</h1>
       <ul>
         {users.map((user) => (
-          <Link to={`/users/${user._id}`} key={user._id}>{user.name}   |  {user.email}</Link>
+          <p className='bg-gray-200 p-3 m-2 rounded-md hover:bg-green-200 relative' key={user._id}><Link to={`/users/${user._id}`} >{user.name}   |  {user.email}</Link>
+          <span onClick={()=>handleDelete(user._id)} className='absolute top-1 text-white font-bold right-3 p-2 bg-red-500 rounded-sm cursor-pointer '>X</span>
+          </p>
         ))}
       </ul>
     </div>

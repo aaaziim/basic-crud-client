@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const SingleUser = () => {
 
@@ -48,8 +48,9 @@ const SingleUser = () => {
     return (
         <div>
         <h1>User Details</h1>
-        <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
+        <p className='bg-gray-200 p-3 m-2 rounded-md hover:bg-green-200' ><strong>Name:</strong> {user.name}</p>
+        <p className='bg-gray-200 p-3 m-2 rounded-md hover:bg-green-200' ><strong>Email:</strong> {user.email}</p>
+        <Link className='bg-gray-200 p-3 rounded-md hover:bg-green-200 m-2 block'  to={`/users/update/${user._id}`}><button>Update</button></Link>
       </div>
     );
 };

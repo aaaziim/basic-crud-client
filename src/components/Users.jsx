@@ -27,7 +27,18 @@ const Users = () => {
   }, []);
 
   const handleDelete = (id) =>{
-    console.log("delete", id)
+
+    fetch(`http://localhost:5000/users/${id}`, {
+        method:"DELETE"
+    })
+    .then(res=>res.json())
+    .then(data=> {
+        if(data.deletedCount){
+            alert("User Deleted")
+            const remainingUsers = users.filter(user => user._id !== id)
+            setUsers(remainingUsers)
+        }
+    })
   }
 
   if (loading) return <div>Loading...</div>;
